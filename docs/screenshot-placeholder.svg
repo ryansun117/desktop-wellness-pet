@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">Wellness Pet screenshot placeholder</title>
+  <desc id="desc">A calm gradient panel with an original rounded pet illustration and the words screenshot coming soon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9fbf7"/><stop offset="1" stop-color="#c7e9eb"/></linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ce0d5"/><stop offset="1" stop-color="#45aab3"/></linearGradient>
+  </defs>
+  <rect width="900" height="500" rx="30" fill="url(#bg)"/>
+  <circle cx="450" cy="225" r="130" fill="#fff" opacity=".45"/>
+  <ellipse cx="450" cy="346" rx="105" ry="18" fill="#183c48" opacity=".12"/>
+  <path d="M385 204 371 137l57 40m87 27 14-67-57 40" fill="url(#body)" stroke="#287b86" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M367 223c0-68 36-103 83-103s84 35 84 103v56c0 55-36 88-84 88s-83-33-83-88Z" fill="url(#body)" stroke="#287b86" stroke-width="7"/>
+  <ellipse cx="417" cy="227" rx="10" ry="13" fill="#173b48"/><ellipse cx="483" cy="227" rx="10" ry="13" fill="#173b48"/>
+  <path d="M434 257q16 16 32 0" fill="none" stroke="#1d5260" stroke-width="7" stroke-linecap="round"/>
+  <text x="450" y="438" fill="#31515c" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="24" font-weight="700">Screenshot coming soon</text>
+</svg>
+
