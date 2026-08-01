@@ -1,0 +1,31 @@
+[package]
+name = "desktop-wellness-pet"
+version = "0.1.0"
+description = "A Rust-powered desktop companion for healthy breaks"
+authors = ["Wellness Pet contributors"]
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "wellness_pet_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+chrono = { version = "0.4", features = ["serde", "clock"] }
+chrono-tz = { version = "0.10", features = ["serde"] }
+iana-time-zone = "0.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2.11.5", features = ["tray-icon", "macos-private-api"] }
+tauri-plugin-autostart = "2.5.1"
+tauri-plugin-notification = "2.3.3"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tokio = { version = "1", features = ["time"] }
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,8 @@
+.reminder-bubble { position: absolute; z-index: 10; top: 24px; width: calc(100% - 18px); padding: 10px; border: 1px solid rgba(68,122,128,.25); border-radius: 16px; color: #193b47; background: rgba(255,255,255,.96); box-shadow: 0 8px 24px rgba(19,57,68,.2); text-align: center; }
+.reminder-bubble::after { content: ""; position: absolute; bottom: -7px; left: 50%; width: 13px; height: 13px; transform: translateX(-50%) rotate(45deg); background: inherit; border-right: inherit; border-bottom: inherit; }
+.reminder-bubble p { margin: 0 0 8px; font-size: 14px; font-weight: 700; }
+.reminder-actions { position: relative; z-index: 1; display: flex; gap: 5px; justify-content: center; }
+.reminder-actions button { border: 1px solid #bad8d8; border-radius: 999px; padding: 4px 9px; color: #31515c; background: #f5fbfa; cursor: pointer; font-size: 11px; }
+.reminder-actions button.primary { color: white; background: #298e99; border-color: #298e99; }
+.reminder-bubble + .pet { margin-top: 48px; }
+
