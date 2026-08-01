@@ -59,6 +59,14 @@ The scheduler wakes every 15 seconds, evaluates wall-clock timestamps, persists 
 
 Follow the current [Tauri prerequisite guide](https://v2.tauri.app/start/prerequisites/) if your environment differs.
 
+When Rust was installed through Homebrew's keg-only `rustup` formula, expose its commands in the current terminal session before running Cargo or Tauri:
+
+```bash
+export PATH="$(brew --prefix rustup)/bin:$PATH"
+```
+
+This project does not modify shell startup files automatically.
+
 ## Develop
 
 ```bash
