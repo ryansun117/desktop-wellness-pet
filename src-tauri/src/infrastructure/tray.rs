@@ -112,8 +112,7 @@ fn handle_menu(app: &AppHandle, event: tauri::menu::MenuEvent) {
         }
         "settings" => {
             if let Some(window) = window {
-                let _ = window.set_resizable(true);
-                let _ = window.set_size(tauri::LogicalSize::new(420.0, 620.0));
+                let _ = super::window_state::expand_settings(&window);
                 let _ = window.show();
                 let _ = window.set_focus();
             }

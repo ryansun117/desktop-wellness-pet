@@ -110,10 +110,7 @@ pub fn hide_pet(app: AppHandle) -> Result<(), AppError> {
 #[tauri::command]
 pub fn open_settings(app: AppHandle) -> Result<(), AppError> {
     let window = main_window(&app)?;
-    window.set_resizable(true).map_err(window_error)?;
-    window
-        .set_size(LogicalSize::new(420.0, 620.0))
-        .map_err(window_error)?;
+    crate::infrastructure::window_state::expand_settings(&window)?;
     window.show().map_err(window_error)?;
     window.set_focus().map_err(window_error)
 }

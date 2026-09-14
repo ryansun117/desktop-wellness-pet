@@ -1,10 +1,8 @@
 # Wellness Pet
 
-Wellness Pet is a tiny animated macOS companion that nudges you to drink water and stand up at configurable intervals. The friendly interface is React; the actual reminder engine is Rust.
+Wellness Pet is a tiny animated Persian cat for your Mac that nudges you to drink water and stand up at configurable intervals. The friendly interface is React; the actual reminder engine is Rust.
 
-![Wellness Pet screenshot placeholder](docs/screenshot-placeholder.svg)
-
-> A real application screenshot will replace this placeholder after the first tagged release.
+![Wellness Pet running on macOS: a fluffy golden-brown Persian cat with amber eyes and a Settings button](docs/wellness-pet.jpg)
 
 ## Why this project exists
 
@@ -22,8 +20,10 @@ The differentiator is architectural: Rust is not decorative Tauri boilerplate. I
 - Sequential presentation when both reminders are overdue
 - Pause/resume, always-on-top, and opt-in launch at login
 - Transparent, borderless, draggable pet window with remembered on-screen position
+- Drag the cat directly; open controls with the Settings button
+- Scrollable controls and settings that stay within the display when opened
 - Menu-bar controls that can always show, hide, pause, resume, or quit
-- Original inline-SVG pet with idle, water-due, stand-due, snoozed, celebrating, and paused states
+- Original inline-SVG Persian cat with golden-brown fur, amber eyes, and idle, water-due, stand-due, snoozed, celebrating, and paused states
 - Local-only, versioned, crash-resistant JSON persistence
 
 ## Technology
@@ -106,7 +106,7 @@ Read [AGENTS.md](AGENTS.md) and [ARCHITECTURE.md](ARCHITECTURE.md), create a foc
 
 ## Roadmap
 
-- Replace the screenshot placeholder and polish the original application icon
+- Polish the original application icon
 - Add signed and notarized macOS releases with a polished DMG installer
 - Validate Windows and Linux window/tray behavior
 - Add more original pet themes without changing the reminder architecture

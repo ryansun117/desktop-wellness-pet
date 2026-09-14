@@ -1,9 +1,42 @@
 use std::{fs, path::PathBuf};
 
 use serde::{Deserialize, Serialize};
-use tauri::{PhysicalPosition, WebviewWindow};
+use tauri::{LogicalSize, PhysicalPosition, WebviewWindow};
 
 use crate::error::AppError;
+
+pub fn expand_settings(window: &WebviewWindow) -> Result<(), AppError> {
+    window.set_resizable(true).map_err(window_error)?;
+    if let Some(monitor) = window.current_monitor().map_err(window_error)? {
+        let area = monitor.work_area();
+        let scale = monitor.scale_factor();
+        let width = 420.0_f64.min(f64::from(area.size.width) / scale);
+        let height = 620.0_f64.min(f64::from(area.size.height) / scale);
+        window
+            .set_size(LogicalSize::new(width, height))
+            .map_err(window_error)?;
+        let position = window.outer_position().map_err(window_error)?;
+        // The native resize is queued, so outer_size may still report compact
+        // dimensions here. Clamp against the requested borderless window size.
+        let size = LogicalSize::new(width, height).to_physical::<u32>(scale);
+        window
+            .set_position(PhysicalPosition::new(
+                clamp_axis(position.x, area.position.x, area.size.width, size.width),
+                clamp_axis(position.y, area.position.y, area.size.height, size.height),
+            ))
+            .map_err(window_error)?;
+    } else {
+        window
+            .set_size(LogicalSize::new(420.0, 620.0))
+            .map_err(window_error)?;
+        window.center().map_err(window_error)?;
+    }
+    Ok(())
+}
+
+fn clamp_axis(position: i32, origin: i32, available: u32, size: u32) -> i32 {
+    position.clamp(origin, origin + available.saturating_sub(size) as i32)
+}
 
 #[derive(Debug, Clone)]
 pub struct WindowStateStore {
@@ -78,7 +111,16 @@ fn window_error(error: tauri::Error) -> AppError {
 
 #[cfg(test)]
 mod tests {
-    use super::rectangles_intersect;
+    use super::{clamp_axis, rectangles_intersect};
+
+    #[test]
+    fn expanded_window_stays_inside_monitor_work_area() {
+        assert_eq!(clamp_axis(1300, 0, 1440, 420), 1020);
+        assert_eq!(clamp_axis(700, 25, 850, 620), 255);
+        assert_eq!(clamp_axis(-1300, -1440, 1440, 420), -1300);
+        assert_eq!(clamp_axis(-1500, -1440, 1440, 420), -1440);
+        assert_eq!(clamp_axis(100, 0, 300, 420), 0);
+    }
 
     #[test]
     fn detects_visible_and_offscreen_windows() {
